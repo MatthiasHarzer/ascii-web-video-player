@@ -50,8 +50,6 @@
         }
 
         element.remove();
-
-        console.log(viewport_width, viewport_height, "font size", font_size);
     }
 
     const play_video = async () => {
