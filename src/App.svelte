@@ -3,7 +3,13 @@
     import VideoPlayer from "./lib/VideoPlayer.svelte";
 
     const url = new URL(window.location.href);
-    const video = url.searchParams.get("video");
+    let video = url.searchParams.get("video");
+
+    if (!video) {
+        window.location.href = "/?video=never_gonna_give_you_up";
+        video = "never_gonna_give_you_up";
+    }
+
 
 
 </script>
