@@ -3,11 +3,14 @@
     import {AsciiVideoClient, type AsciiVideoInfoResponse, type Frames} from "./ascii_video_client";
 
     export let filename: string;
+    export let current_frame_id = 0;
+
+    export let total_frames = 0;
 
     $: video_client = new AsciiVideoClient(filename);
 
     let frames: Frames = {};
-    let current_frame_id = 0;
+
     let frame_element: HTMLDivElement;
     let loading_frames = false;
     let interval_id: number;
@@ -17,6 +20,8 @@
     let frame_width: number | null = null;
     let line_height: number | null = null;
     let font_size: number = 10;
+
+    $: total_frames = video_info?.frames_count;
 
     const determine_font_size = () => {
         if (frame_width == null || line_height == null) {
